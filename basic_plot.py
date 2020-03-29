@@ -17,7 +17,7 @@ last_cases = 0
 last_recovered = 0
 last_tested = 0
 last_death = 0
-start_time = dt.datetime(2020, 2, 23, 18, 0, 0)
+start_time = dt.datetime(2020, 2, 23)
 with open('./pcm-dpc-data/dati-json/dpc-covid19-ita-andamento-nazionale.json') as json_file:
     data = json.load(json_file)
     for obj in data:
