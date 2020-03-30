@@ -25,13 +25,13 @@ with open('./pcm-dpc-data/dati-json/dpc-covid19-ita-andamento-nazionale.json') a
     for obj in data:
       date=dt.datetime.strptime(obj['data'],'%Y-%m-%dT%H:%M:%S')-start_time
       dates.append(date.days)
-      discovered_cases.append(obj['totale_casi'] - last_cases)
+      discovered_cases.append(int(obj['totale_casi']) - last_cases)
       recovered_cases.append(obj['dimessi_guariti']-last_recovered)
       tested.append(obj['tamponi']-last_tested)
       death.append(obj['deceduti']-last_death)
       positive_perct.append(discovered_cases[-1]/tested[-1])
       lethality.append(obj['deceduti']/obj['tamponi'])
-      lethality_on_pos.append(obj['deceduti']/obj['totale_casi'])
+      lethality_on_pos.append(obj['deceduti']/int(obj['totale_casi']))
       last_cases = obj['totale_casi']
       last_tested = obj['tamponi']
       last_recovered = obj['dimessi_guariti']
