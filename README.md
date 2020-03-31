@@ -1,6 +1,6 @@
 # COVID19 Italian plots
 
-Some basic statistics on covid19 Italian data based on DPC data. I am not a data scientist by any mean am just an Electronics Engineer. I am trying to figure out the trend of the situation just to monitor the situation.
+Some basic statistics on covid19 Italian data based on DPC data. I am not a data scientist by any mean am just an Electronics Engineer. I am trying to figure out the trend of the situation just to monitor it and keep my eye on it.
 <br>
 ## Latest data
 
