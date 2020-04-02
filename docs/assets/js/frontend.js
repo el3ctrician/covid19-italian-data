@@ -69,6 +69,7 @@ function plotter(covid_data){
   var new_cases = []
   var new_tested = []
   var percentage = []
+  var cases_percentage = [0,]
   var new_death =[]
   var new_recovered =[]
   var leth =[]
@@ -83,6 +84,11 @@ function plotter(covid_data){
     var myDate = new Date(covid_data[k].data);
     var parsed_date = myDate.getDate()+" "+(monthNames[myDate.getMonth()]);
     days.push(parsed_date);
+    var todays_case = covid_data[k].totale_casi-last_cases
+    if (k>0) {
+        cases_percentage.push(((todays_case-new_cases.slice(-1)[0])/new_cases.slice(-1)[0])*100)
+    }
+
     new_cases.push(covid_data[k].totale_casi-last_cases);
     new_tested.push(covid_data[k].tamponi - last_tested);
     new_death.push(covid_data[k].deceduti - last_death);
@@ -98,10 +104,10 @@ function plotter(covid_data){
   var tested_ctx = document.getElementById('chart-tested').getContext('2d');
   var cases_ctx  = document.getElementById('chart-cases').getContext('2d');
   var percentage_ctx = document.getElementById('chart-percentage').getContext('2d');
-
   var death_ctx = document.getElementById('chart-death').getContext('2d');
   var recovered_ctx = document.getElementById('chart-recovered').getContext('2d');
-  var leth_ctx = document.getElementById('chart-lethality').getContext('2d');  
+  var leth_ctx = document.getElementById('chart-lethality').getContext('2d');    
+  var cases_percentage_ctx = document.getElementById('chart-cases-percentage').getContext('2d');    
   
 
   var tested_cfg = $.extend( true, {}, display_config );
@@ -110,6 +116,7 @@ function plotter(covid_data){
   var death_cfg = $.extend( true, {}, display_config );
   var recovered_cfg = $.extend( true, {}, display_config );
   var lethality_cfg = $.extend( true, {}, display_config );
+  var cases_percentage_cfg = $.extend( true, {}, display_config );
 
   tested_cfg.data.labels = days;
   tested_cfg.data.datasets[0].data=new_tested;
@@ -177,12 +184,25 @@ function plotter(covid_data){
   lethality_cfg.data.datasets.push(new_dataset);
   lethality_cfg.options.title.text = "Lethality"
 
+  cases_percentage_cfg.data.labels = days;
+  cases_percentage_cfg.data.datasets[0].data=cases_percentage;
+  cases_percentage_cfg.data.datasets[0].backgroundColor = "#000080";
+  cases_percentage_cfg.data.datasets[0].borderColor = "#000080";
+  cases_percentage_cfg.data.datasets[0].label="Percentage";
+  cases_percentage_cfg.options.scales.yAxes[0].scaleLabel.labelString = "Variation percentage of positive cases "
+  cases_percentage_cfg.options.title.text = "Variation percentage"
+  cases_percentage_cfg.options.scales.yAxes[0].ticks =  {
+    callback: function(tick) {
+      return tick.toString() + '%';
+    }
+  }
   var tested_chart = new Chart(tested_ctx, tested_cfg);
   var cases_chart = new Chart(cases_ctx, cases_cfg);
   var percentage_chart = new Chart(percentage_ctx, percentage_cfg);
   var death_chart = new Chart(death_ctx, death_cfg);
   var recovered_chart = new Chart(recovered_ctx, recovered_cfg);
   var lethality_chart = new Chart(leth_ctx, lethality_cfg);
+  var cases_percentage_chart = new Chart(cases_percentage_ctx, cases_percentage_cfg);
 }
 
 
@@ -191,11 +211,13 @@ xhr.open("GET",PCM_DPC_URL,true);
 xhr.onload = function (e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      console.log(JSON.parse(xhr.responseText));
       toggleDisplay();
       plotter(JSON.parse(xhr.responseText));
     } else {
       console.error(xhr.statusText);
+      console.info("Github seems down, moving to cached data")
+      toggleDisplay();
+      plotter(latest_data);
     }
   }
 };
@@ -203,8 +225,4 @@ xhr.onerror = function (e) {
   console.error(xhr.statusText);
 };
 xhr.send(null);
-console.log("waiting for request ...");
-
-document.addEventListener("DOMContentLoaded", function() { 
-  console.log("dom loaded !")
-});
+console.info("waiting for request ...");

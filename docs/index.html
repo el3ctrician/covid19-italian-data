@@ -14,10 +14,8 @@
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="nav-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Covid-19</a>
         </div>
@@ -65,6 +63,12 @@
             <canvas id="chart-lethality"></canvas>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md" style = "height:40vh;">
+          <div class="lds-ring", id="loading-circle"><div></div><div></div><div></div><div></div></div>
+            <canvas id="chart-cases-percentage"></canvas>
+        </div>
+      </div>
 
     </div> <!-- contanier end dev-->
 
@@ -76,6 +80,7 @@
     <!-- Chart js include -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"> </script>
     <!-- real js code -->
+    <script src="./assets/js/latest_data.js"></script>
     <script src="./assets/js/frontend.js"></script>
   </body>
 </html>
