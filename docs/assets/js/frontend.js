@@ -138,14 +138,14 @@ function plotter(covid_data){
   percentage_cfg.data.datasets[0].data=percentage;
   percentage_cfg.data.datasets[0].backgroundColor = "#dc73dc";
   percentage_cfg.data.datasets[0].borderColor = "#dc73dc";
-  percentage_cfg.data.datasets[0].label="Percentage";
+  percentage_cfg.data.datasets[0].label="Percentage of positives to daily tests";
   percentage_cfg.options.scales.yAxes[0].scaleLabel.labelString = "Percentage"
   percentage_cfg.options.scales.yAxes[0].ticks =  {
     callback: function(tick) {
       return tick.toString() + '%';
     }
   }
-  percentage_cfg.options.title.text = "Percentage of positive cases"
+  percentage_cfg.options.title.text = "Percentage of positive cases to daily tests"
 
   death_cfg.data.labels = days;
   death_cfg.data.datasets[0].data=new_death;
