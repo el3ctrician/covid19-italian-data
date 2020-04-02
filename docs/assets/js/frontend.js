@@ -13,6 +13,11 @@ const display_config = {
   },
   options: {
     responsive: true,
+    maintainAspectRatio : false,
+    onResize : function(chart,new_size){
+      chart.canvas.parentNode.style.height = '40vh';
+      chart.canvas.parentNode.style.width = '80vw';
+    },
     title: {
       display: true,
       text: 'Covid-19 Italian data'
@@ -180,8 +185,8 @@ function plotter(covid_data){
   var lethality_chart = new Chart(leth_ctx, lethality_cfg);
   if(window.innerHeight > window.innerWidth){
     
-    var warn_div = document.getElementById("rotate_warning");
-    warn_div.style.display = "block"
+    // var warn_div = document.getElementById("rotate_warning");
+    // warn_div.style.display = "block"
 }
 }
 
