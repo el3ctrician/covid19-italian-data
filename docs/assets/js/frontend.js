@@ -69,7 +69,7 @@ function plotter(covid_data){
   var new_cases = []
   var new_tested = []
   var percentage = []
-  var cases_percentage = [0,]
+  var cases_percentage = [null,]
   var new_death =[]
   var new_recovered =[]
   var leth =[]
