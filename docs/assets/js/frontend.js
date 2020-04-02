@@ -178,6 +178,11 @@ function plotter(covid_data){
   var death_chart = new Chart(death_ctx, death_cfg);
   var recovered_chart = new Chart(recovered_ctx, recovered_cfg);
   var lethality_chart = new Chart(leth_ctx, lethality_cfg);
+  if(window.innerHeight > window.innerWidth){
+    
+    var warn_div = document.getElementById("rotate_warning");
+    warn_div.style.display = "block"
+}
 }
 
 
