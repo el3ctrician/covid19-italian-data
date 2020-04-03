@@ -6,6 +6,7 @@ Some basic statistics on covid19 Italian data based on DPC data. I am not a data
 the web site code is hosted under the `./docs` folder of this repo. Everything is in pure Js that runs on the client machine
 
 </br>
+
 ## Latest data
 
 ![data.svg](data.svg)
