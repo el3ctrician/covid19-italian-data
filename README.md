@@ -1,20 +1,31 @@
-# COVID19 Italian plots
+# COVID-19 Italian Data Plots  
 
-Some basic statistics on covid19 Italian data based on DPC data. I am not a data scientist by any mean am just an Electronics Engineer. I am trying to figure out the trend of the situation just to monitor it and keep my eye on it. An always updated interactive implementation can be found [here](https://el3ctrician.github.io/covid19-italian-data/)
+This project provides basic statistics and visualizations of COVID-19 data in Italy using data from the Dipartimento della Protezione Civile (DPC).  
 
-## Web site code
-the web site code is hosted under the `./docs` folder of this repo. Everything is in pure Js that runs on the client machine
+I am an Electronics Engineer, not a data scientist. This project is my personal effort to monitor trends and stay informed about the situation.  
 
-</br>
+An interactive and *almost* always-updated version of these plots is available [here](https://ahmadelbadri.com/covid19-italian-data/).  
 
-## Latest data
+## 📂 Website Code  
 
-![data.svg](data.svg)
+The code for the website is located in the `./docs` folder of this repository. The site is built entirely in JavaScript and runs on the client side.  
 
-## Installation
+## 📊 Latest Data  
 
-just run `pip install -r requirements.txt`from the project root and you are good to go, make sure to have python3.7 and pip installed
-<br>
-## Generate a plot
+![Latest Data](data.svg)  
 
-Simply run `python basic_plot.py`
+## 🔧 Installation  
+
+To get started, ensure you have Python 3.7+ and pip installed. Then, run the following command from the project root:  
+
+```bash  
+pip install -r requirements.txt  
+```  
+
+## 🖼️ Generate a Plot  
+
+To generate a plot, simply run:  
+
+```bash  
+python basic_plot.py  
+```  
